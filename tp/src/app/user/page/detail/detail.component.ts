@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UserModel } from '../../model/userModel';
 import { UserService } from '../../service/user.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UserService } from '../../service/user.service';
   styleUrls: ['./detail.component.css'],
 })
 export class DetailComponent implements OnInit {
-  private users: any;
+  public users!: UserModel;
 
   constructor(private service: UserService, private route: ActivatedRoute) {}
 
@@ -17,10 +18,14 @@ export class DetailComponent implements OnInit {
   }
 
   displayUser = () => {
-    this.users = this.service.data.filter(
+    let resu: any = [];
+    this.service.data.subscribe((data) => (resu = data));
+
+    resu = resu.filter(
       (data: any) => data.id == this.route.snapshot.params['id']
     );
-    console.log(this.service.data);
+
+    this.users = resu[0];
     console.log(this.users);
   };
 }

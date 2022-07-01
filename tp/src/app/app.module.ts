@@ -6,19 +6,17 @@ import { AppComponent } from './app.component';
 import { UsersPageComponent } from './user/page/users-page/users-page.component';
 import { DetailComponent } from './user/page/detail/detail.component';
 import { DisplayComponent } from './user/component/display/display.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersPageComponent,
     DetailComponent,
-    DisplayComponent
+    DisplayComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AddressModel } from '../../model/addressModel';
+import { CompanyModel } from '../../model/companyModel';
+import { GeoModel } from '../../model/geoModel';
+import { UserModel } from '../../model/userModel';
 import { UserService } from '../../service/user.service';
 
 @Component({
@@ -12,10 +16,10 @@ export class UsersPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
-    console.log(this.users);
   }
 
-  getUsers = () => {
-    this.users = this.service.data;
+  getUsers = (): void => {
+    this.service.getUsers();
+    this.service.data.subscribe((datab) => (this.users = datab));
   };
 }
