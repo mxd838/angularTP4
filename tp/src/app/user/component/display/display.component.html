@@ -1,0 +1,6 @@
+<div *ngFor="let item of data; let i = index">
+  <p>
+    {{ item.name }}
+    <button [routerLink]="['/detail', item.id]">Détails</button>
+  </p>
+</div>
